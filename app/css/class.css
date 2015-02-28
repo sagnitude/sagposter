@@ -1,0 +1,123 @@
+html, body{
+    min-height: 100%;
+    position: relative;
+    height: 100%;
+    max-height: 100%;
+}
+
+.fullCover{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    position: relative;
+    display: block;
+}
+
+/* ANIMATIONS
+============================================================================= */
+
+/* leaving animations ----------------------------------------- */
+/* rotate and fall */
+@keyframes rotateFall {
+    0%         { transform: rotateZ(0deg); }
+    20%     { transform: rotateZ(10deg); animation-timing-function: ease-out; }
+    40%     { transform: rotateZ(17deg); }
+    60%     { transform: rotateZ(16deg); }
+    100%     { transform: translateY(100%) rotateZ(17deg); }
+}
+
+/* slide out to left */
+@keyframes slideOutLeft {
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+/* slide out to right */
+@keyframes slideOutRight {
+    to {
+        transform: translateX(200%);
+        opacity: 0;
+    }
+}
+
+/* rotate out */
+@keyframes rotateOutNewspaper {
+    to {
+        transform: translateZ(-3000px) rotateZ(360deg);
+        opacity: 0;
+    }
+}
+
+/* fade */
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+/* entering animations --------------------------------------- */
+/* scale up */
+@keyframes scaleUp {
+    from {
+        opacity: 0.3;
+        -webkit-transform: scale(0.8);
+    }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from {
+        transform:translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* slide in from the left */
+@keyframes slideInLeft {
+    from {
+        transform:translateX(0);
+    }
+    to {
+        transform:translateX(100%);
+    }
+}
+
+/* slide in from the bottom */
+@keyframes slideInUp {
+    from {
+        transform:translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* fade */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes selectPanelChangeBackground {
+    from {
+        background-color: transparent;
+    }
+    to {
+        background-color: rgba(110,127,147,1.0);
+    }
+}
+
+@keyframes deselectPanelChangeBackground {
+    from {
+        background-color: rgba(110,127,147,1.0);
+    }
+    to {
+        background-color: transparent;
+    }
+}

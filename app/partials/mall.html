@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="partials/mall.css">
+</head>
+<body>
+<div ng-controller="MallDisplayWindowCtrl" layout="column">
+    <div id="panel_container" flex="" layout="row">
+        <md-sidenav id="scroller_sidenav" layout="column" layout-padding class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$media('gt-md')">
+            <md-toolbar ng-click="scrollUp()" class="md-button scroll_btns" id="scroll_up_btn">
+                <md-icon icon="img/icons/ic_expand_less_48px.svg"></md-icon>
+            </md-toolbar>
+            <md-content flex id="panel_scroller">
+                <div layout-fill md-scroll-y id="panel_list_container" class="content_container">
+                    <ul class="scroller_menu" id="panel_selector_list">
+                        <li layout-fill layout="column" ng-repeat="panel in panels" class="parent_list_item" ng-class="{'panelActive': isPanelCurrentState(panel)}">
+                            <div flex layout="row">
+                                <div class="hilite_hover" ng-show="isPanelCurrentState(panel)"></div>
+                                <md-button class="md-background" ng-click="selectPanel($index)" ng-class="{true:'panel_select_button'}[true]" layout-fill ui-sref="{{panel.state}}({m:panel.module})">
+                                    {{panel.title}}
+                                </md-button>
+                            </div>
+                            <md-divider ng-if="!$last"></md-divider>
+                        </li>
+                    </ul>
+                </div>
+            </md-content>
+            <md-toolbar ng-click="scrollDown()" class="md-button scroll_btns" id="scroll_down_btn">
+                <md-icon icon="img/icons/ic_expand_more_48px.svg"></md-icon>
+            </md-toolbar>
+        </md-sidenav>
+        <md-content id="display_panel" layout="row" layout-fill layout-padding>
+            <div layout-fill class="content_container" id="mall_display_area" layout="column">
+                <md-toolbar id="mall_hidden_toolbar" ng-show="isHidden()" ng-click="toggleLeft()">
+                    <div class="md-toolbar-tools" layout="row">
+                        <md-button class="menu-icon" aria-label="Toggle Menu">
+                            <md-icon icon="img/icons/ic_menu_24px.svg"></md-icon>
+                        </md-button>
+                        <div layout="row" flex class="subtitle fill-height">
+                            <div class="md-toolbar-item md-breadcrumb">
+                                <span>选择统计项目</span>
+                            </div>
+                        </div>
+                    </div>
+                </md-toolbar>
+                <div ui-view="MallDisplayView" flex layout="row" id="mall_display_canvas_panel">
+                    Contents Here
+                </div>
+            </div>
+        </md-content>
+    </div>
+    <div id="bottom_statistics" style="display: none;">
+        <div id="statistics_scroller_panel" layout="column" ng-controller="MallBottomChartCtrl" class="content_container" md-scroll-x layout-fill>
+            <cstyle>
+                #chart_canvas_container>div, #chart_canvas_container {
+                width: {{$parent.bottom_width}}px;
+                height: {{$parent.bottom_height}}px;
+                }
+            </cstyle>
+            <div id="chart_canvas_container" flex layout-fill layout="column">
+                <canvas flex layout-fill id="line" class="chart chart-line" data="lastestStats.data"
+                        labels="lastestStats.labels" series="lastestStats.series"
+                        click="lastestStats.onClick" option="lastestStats.options"
+                        height="{{$parent.bottom_height}}" width="{{$parent.bottom_width}}">
+                </canvas>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

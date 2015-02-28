@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html ng-app="ids2bweb">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>IDS Control Panel</title>
+
+    <link rel="stylesheet" href="./libs/angular-material.min.css">
+    <link rel="stylesheet" href="./libs/angular-chart.css">
+    <script src="./libs/require.min.js" defer async="true" data-main="main"></script>
+
+    <link rel="stylesheet" href="./css/app.css">
+    <link rel="stylesheet" href="./css/class.css">
+</head>
+<body>
+<div class="fullCover" ng-controller="PageCtrl" id="page_wrapper">
+    <div class="fullCover" id="content_wrapper" ng-controller="MainCtrl" layout="row">
+        <div ng-cloak class="fullCover ng-cloak" ng-controller="LoginCtrl" ng-show="!(canLogin())" ui-view="LoginFormView"></div>
+        <div ng-cloak class="fullCover ng-cloak" layout-fill ng-controller="ContentWrapperCtrl" layout="column">
+            <md-toolbar ng-controller="LoginStateCtrl" id="login_state_toolbar">
+                <span>LoginState</span>
+            </md-toolbar>
+            <md-content md-scroll-y flex id="content_container" layout="column" class="md-padding">
+                <div id="sub_content_banner_container" layout="row">
+                    <div id="left_banner_wrapper" layout="row">
+                        <div id="logo_wrapper" flex-order="1">
+                            <a href="#" id="logo_anchor"><img src="./img/logo.png" id="logo"></a>
+                        </div>
+                        <div id="selector_wrapper" flex flex-order="2">
+                            <md-button>Select Mall</md-button>
+                        </div>
+                    </div>
+                    <div ng-controller="SelectorWrapperCtrl" ng-hide>
+                        <div ng-controller="MallSelectorCtrl"></div>
+                        <div ng-controller="ShopSelectorCtrl"></div>
+                    </div>
+                    <div ng-controller="RealTimeStateCtrl" flex="45"></div>
+                </div>
+                <div flex layout-padding id="sub_container_content_container" ng-controller="DisplayWindowCtrl">
+                    <div ui-view="DisplayView" flex layout="column"></div>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</div>
+</body>
+</html>

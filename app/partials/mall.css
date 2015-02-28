@@ -1,0 +1,122 @@
+#panel_container{
+    height: 640px;
+    position: relative;
+    overflow: hidden;
+}
+
+#display_panel{
+    overflow: hidden;
+}
+
+#scroller_sidenav{
+    -webkit-box-shadow: 0 0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 0 transparent;
+    box-shadow: 0 0 0 0 transparent;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: inherit;
+    z-index: 61;
+}
+
+.scroller_menu{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.scroll_btns{
+    height: 36px;
+    max-height: 36px;
+    min-height: 36px;
+    -webkit-box-shadow: 0 0 0 transparent;
+    -moz-box-shadow: 0 0 0 0 transparent;
+    box-shadow: 0 0 0 0 transparent;
+    background-color: transparent;
+}
+
+.scroll_btns:hover{
+    background-color: rgba(64,64,64,0.4);
+}
+
+#panel_scroller{
+    height: 568px;
+    overflow: auto;
+    padding: 0;
+}
+
+#panel_scroller .content_container{
+    overflow: auto;
+}
+
+#panel_scroller, #mall_display_area, #statistics_scroller_panel{
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2);
+}
+
+#display_panel{
+    padding-top: 36px;
+    padding-bottom: 36px;
+}
+
+#bottom_statistics{
+    height: 210px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+#statistics_scroller_panel{
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#chart_canvas_container>div, #chart_canvas_container{
+    height:194px;
+    /*width: 3000px;*/
+}
+
+#content_container{
+    background: url('../img/bg.png') repeat;
+}
+
+.content_container{
+    background-color: rgba(90,107,127,1.0);
+}
+
+#content_container md-sidenav, #content_container md-content{
+    background-color: transparent;
+}
+
+.subtitle{
+    font-size: 18px;
+}
+
+#mall_hidden_toolbar md-icon{
+    margin: auto;
+}
+
+.panelActive{
+    background-color: rgba(110,127,147,1.0);
+}
+
+.panelActive-add{
+    animation: 0.5s selectPanelChangeBackground;
+}
+
+.panelActive-remove{
+    animation: 0.5s deselectPanelChangeBackground;
+}
+
+#panel_selector_list button{
+    color: #345;
+}
+
+#panel_selector_list .panelActive button, .phoneSelected button{
+    color: #ABC;
+}
+
+#mall_display_canvas_panel{
+    max-height: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}

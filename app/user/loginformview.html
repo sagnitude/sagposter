@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="user/loginform.css">
+</head>
+<body>
+<div id="login_wrapper" class="fullCover" layout-fill ng-controller="LoginActionCtrl" noselect>
+    <div layout="row" layout-fill id="login_page_wrapper">
+        <form id="login_form" class="form-horizontal" role="form" method="post" ng-submit="doLogin(user)" name="xForm">
+            <div class="form_group">
+                <h1 id="loginform_title">IDS2B Web Interface</h1>
+            </div>
+            <div class="form_group" ng-class="{'has-success':xForm.username.$valid,'has-error':xForm.username.$invalid&&xForm.username.$dirty}">
+                <md-input-container flex>
+                    <label ng-bind="usernameDefaultLabelText"></label>
+                    <input ng-model="user.username" name="username" type="email" placeholder="Your username" class="form-control" id="username" required>
+                </md-input-container>
+                <div class="error_hint" ng-show="xForm.username.$invalid&&xForm.username.$dirty">
+                    <span style="color: #ff4a0d" ng-bind="getAppropriateUsernameLabelText()"></span>
+                </div>
+            </div>
+            <div class="form_group" ng-class="{'has-success':xForm.password.$valid,'has-error':xForm.password.$invalid&&xForm.username.$dirty}">
+                <md-input-container flex>
+                    <label ng-bind="passwordDefaultLabelText"></label>
+                    <input ng-model="user.password" name="password" type="password" placeholder="Your password" class="form-control" id="password" required ng-pattern="/^[\S]{6,}$/">
+                </md-input-container>
+                <div class="error_hint" ng-show="xForm.password.$invalid&&xForm.password.$dirty">
+                    <span style="color: #ff4a0d" ng-bind="passwordTooShortLabelText"></span>
+                </div>
+            </div>
+            <div class="form_group">
+                <md-checkbox class="md-primary" ng-model="user.remember" aria-label="记住我">
+                    记住我
+                </md-checkbox>
+            </div>
+            <div class="form_group">
+                <div layout="row" layout-align="center center">
+                    <md-button class="md-raised form_button" type="submit">登录</md-button>
+                    <md-button class="md-raised form_button" ng-click="tryOut()">试用</md-button>
+                </div>
+            </div>
+            <div class="form_group">
+                <div style="height: 50px;"></div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

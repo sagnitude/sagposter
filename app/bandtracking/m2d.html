@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="bandtracking/m2d.css">
+</head>
+<body>
+<md-content class="mall_display_panel" id="mall_display_" layout="row" layout-fill flex ng-controller="TwoDViewCtrl">
+    <md-sidenav id="bandtracking_control_nav" layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="band_left" md-is-locked-open="$media('gt-sm')">
+        <ul class="scroller_menu" id="select_phone_list">
+            <li layout-fill layout="column" ng-repeat="phone in availablePhones" class="parent_list_item" ng-class="{'phoneSelected': isPhoneSelected(phone)}">
+                <div flex layout="row">
+                    <div class="hilite_hover" ng-show="isPhoneSelected(phone)"></div>
+                    <md-button class="md-background md-button-toggle" ng-click="selectPhone($index)" ng-class="{true: 'phone_select_button'}[true]" layout-fill>
+                        {{phone.number}}
+                        <span aria-hidden="true" class="md-toggle-icon ng-scope" ng-class="{'toggled' : isPhoneSelected(phone)}"></span>
+                    </md-button>
+                </div>
+                <ul ng-show="isPhoneSelected(phone)" class="band_list scroller_menu">
+                    <li layout-fill layout="column" class="son_list_item" ng-repeat="band in phone.bands" ng-click="selectBand(band)">
+                        <md-divider></md-divider>
+                        <div flex layout="row">
+                            <div class="hilite_hover" ng-show="isBandSelected(band)"></div>
+                            <md-button id="band_{{band.name}}" class="md-background" ng-click="selectBand($index)" ng-class="{true: 'band_select_button'}[true]" layout-fill>
+                                {{band.name}}
+                                <cstyle>
+                                    #band_{{band.name}}{
+                                    color: {{band.color}}
+                                    }
+                                </cstyle>
+                            </md-button>
+                        </div>
+                    </li>
+                    <li class="son_list_item" ng-hide="phone.bands.length">
+                        <md-divider></md-divider>
+                        <div layout="row">
+                            <span>No bands found on this number.</span>
+                        </div>
+                    </li>
+                </ul>
+                <md-divider ng-if="!$last"></md-divider>
+            </li>
+        </ul>
+    </md-sidenav>
+    <md-content layout-fill layout="row" flex id="mall_display_core">
+        <md-button hide-gt-sm id="toggle_mall_display_sidenav_" class="menu-icon" aria-label="Toggle Control Panel">
+            <md-icon icon="img/icons/ic_menu_24px.svg"></md-icon>
+        </md-button>
+        <twodview bgmap="{{tempBgMap}}"></twodview>
+    </md-content>
+</md-content>
+</body>
+</html>
